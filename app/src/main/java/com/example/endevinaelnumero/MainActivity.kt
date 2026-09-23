@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-    val num_random = (1..100).random()
+    var num_random = (1..100).random()
     val puntuacion = 0
     var intentos = 0
 
@@ -49,6 +49,9 @@ class MainActivity : AppCompatActivity() {
                 texto_scroll.append("N Try: " + intentos + ". Has introducido el numero correcto\n")
                 val toast = Toast.makeText(this, text_toast_correcto, duration)
                 toast.show()
+                // AL acertar, se hara una nueva partida, por lo tanto se creara un nuevo numero:
+                num_random = (1..100).random()
+
 
 
             } else if (num_introducido > num_random) {
@@ -62,6 +65,7 @@ class MainActivity : AppCompatActivity() {
                 val toast = Toast.makeText(this, text_toast_mayor, duration)
                 toast.show()
             }
+            campo.setText("") //Para que al introducir el numero se borre
 
         }
 
